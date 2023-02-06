@@ -1,0 +1,17 @@
+﻿<Window x:Class="_2023_2_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2023_2_4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock Name="TextBlock1"  HorizontalAlignment="Left" Margin="377,394,0,0" TextWrapping="Wrap" Text="数据库连接状态" VerticalAlignment="Top" Height="17" Width="76"/>
+        <TextBlock Name="TextBlock2" HorizontalAlignment="Left" Margin="35,129,0,0" TextWrapping="Wrap" Text="运行结果" VerticalAlignment="Top" Height="32" Width="380"/>
+        <Button Content="运行" HorizontalAlignment="Left" Margin="522,292,0,0" VerticalAlignment="Top" Height="78" Width="151" Click="Button_Click" FontSize="48" Background="#FFC5482D"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315" Height="42" FontSize="16"/>
+        <TextBlock Name="TextBlock3" HorizontalAlignment="Left" Margin="10,303,0,0" TextWrapping="Wrap" Text="在下方填入单号" VerticalAlignment="Top" Height="42" Width="295" FontSize="36"/>
+
+    </Grid>
+</Window>
