@@ -23,30 +23,46 @@ namespace _2023_2_4
         public MainWindow() 
         {
             InitializeComponent();
-            Task.Run(() => {         //异步执行
-                conn = new SqlConnection("Data Source=192.168.7.20;Initial Catalog=wms;User ID=sa;Password=123456;"); //数据库连接
-                conn.Open();
 
 
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (conn.State == System.Data.ConnectionState.Open)
+                Task.Run(() => {         //异步执行
+
+                    try      //异常捕获
                     {
-                        TextBlock1.Text = "数据库已连接";
-                    }
-                    else
-                    {
+                        conn = new SqlConnection("Data Source=192.168.7.210;Initial Catalog=wms;User ID=sa;Password=123456;"); //数据库连接
+                        conn.Open();
 
+
+                        this.Dispatcher.Invoke(() => //回到主线程运行，ui需要回到界面所在调度器运行
                         {
-                            TextBlock1.Text = "数据库未连接";
-                        }
+                            if (conn.State == System.Data.ConnectionState.Open)
+                            {
+                                TextBlock1.Text = "数据库已连接";
+                            }
+                            else
+                            {
 
+                                {
+                                    TextBlock1.Text = "数据库未连接";
+                                }
+
+                            }
+                        });
                     }
+                    catch (Exception ex)
+                    {
+                        TextBlock1.Text = $@"崩溃了！！{ex}";
+                    }
+
+
+                   
                 });
+
+            
 
 
                 
-            });
+            
             
         }
 
