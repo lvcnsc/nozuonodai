@@ -29,7 +29,7 @@ namespace _2023_2_4
 
                     try      //异常捕获
                     {
-                        conn = new SqlConnection("Data Source=192.168.7.210;Initial Catalog=wms;User ID=sa;Password=123456;"); //数据库连接
+                        conn = new SqlConnection("Data Source=192.168.7.20;Initial Catalog=wms;User ID=sa;Password=123456;"); //数据库连接
                         conn.Open();
 
 
@@ -51,7 +51,9 @@ namespace _2023_2_4
                     }
                     catch (Exception ex)
                     {
+                        this.Dispatcher.Invoke(() => {//回到主线程运行，ui需要回到界面所在调度器运行
                         TextBlock1.Text = $@"崩溃了！！{ex}";
+                        });
                     }
 
 
