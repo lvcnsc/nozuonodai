@@ -23,16 +23,31 @@ namespace _2023_2_4
         public MainWindow()
         {
             InitializeComponent();
-            conn = new SqlConnection("Data Source=192.168.7.210;Initial Catalog=wms;User ID=sa;Password=123456;");
-            conn.Open();
-            if (conn.State == System.Data.ConnectionState.Open)
-            {
-                TextBlock1.Text = "数据库已连接";
-            }
-            else
-            {
-                TextBlock1.Text = "数据库未连接";
-            }
+            Task.Run(() => {         //异步执行
+                conn = new SqlConnection("Data Source=192.168.7.20;Initial Catalog=wms;User ID=sa;Password=123456;");
+                conn.Open();
+
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        TextBlock1.Text = "数据库已连接";
+                    }
+                    else
+                    {
+
+                        {
+                            TextBlock1.Text = "数据库未连接";
+                        }
+
+                    }
+                });
+
+
+                
+            });
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

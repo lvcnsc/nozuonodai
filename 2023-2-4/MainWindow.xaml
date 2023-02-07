@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Name="TextBlock1"  HorizontalAlignment="Left" Margin="377,394,0,0" TextWrapping="Wrap" Text="数据库连接状态" VerticalAlignment="Top" Height="17" Width="76"/>
+        <TextBlock Name="TextBlock1"  HorizontalAlignment="Left" Margin="377,394,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="17" Width="76"/>
         <TextBlock Name="TextBlock2" HorizontalAlignment="Left" Margin="35,129,0,0" TextWrapping="Wrap" Text="运行结果" VerticalAlignment="Top" Height="32" Width="380"/>
         <Button Content="运行" HorizontalAlignment="Left" Margin="522,292,0,0" VerticalAlignment="Top" Height="78" Width="151" Click="Button_Click" FontSize="48" Background="#FFC5482D"/>
         <TextBox HorizontalAlignment="Left" Margin="10,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315" Height="42" FontSize="16"/>
