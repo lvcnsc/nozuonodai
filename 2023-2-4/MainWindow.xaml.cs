@@ -20,11 +20,11 @@ namespace _2023_2_4
     {
         SqlConnection conn;
 
-        public MainWindow()
+        public MainWindow() 
         {
             InitializeComponent();
             Task.Run(() => {         //异步执行
-                conn = new SqlConnection("Data Source=192.168.7.20;Initial Catalog=wms;User ID=sa;Password=123456;");
+                conn = new SqlConnection("Data Source=192.168.7.20;Initial Catalog=wms;User ID=sa;Password=123456;"); //数据库连接
                 conn.Open();
 
 
