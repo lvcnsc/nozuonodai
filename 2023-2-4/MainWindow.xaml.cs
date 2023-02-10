@@ -59,13 +59,17 @@ namespace _2023_2_4
 
                    
                 });
+            if (TextBlock1.Text != "数据库已连接")
+            {
+                TextBlock1.Text = "数据库未连接";
+            }
 
-            
+
 
 
                 //增加了9700K，运行速度好快
-            
-            
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
