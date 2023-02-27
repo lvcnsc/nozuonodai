@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2023_2_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="批号错误处理工具 v0.5" Height="450" Width="800">
     <Grid>
-        <TextBlock Name="TextBlock1"  HorizontalAlignment="Left" Margin="377,394,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="17" Width="76"/>
-        <TextBlock Name="TextBlock2" HorizontalAlignment="Left" Margin="116,50,0,0" TextWrapping="Wrap" Text="运行结果" VerticalAlignment="Top" Height="32" Width="380"/>
-        <Button Content="运行" HorizontalAlignment="Left" Margin="522,292,0,0" VerticalAlignment="Top" Height="78" Width="151" Click="Button_Click" FontSize="48" Background="#FFC5482D"/>
-        <TextBox  Name="TextBox1" HorizontalAlignment="Left" Margin="10,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315" Height="42" FontSize="36"/>
-        <TextBlock Name="TextBlock3" HorizontalAlignment="Left" Margin="10,303,0,0" TextWrapping="Wrap" Text="在下方填入单号" VerticalAlignment="Top" Height="42" Width="295" FontSize="36"/>
-        <TextBlock x:Name="TextBlock4" HorizontalAlignment="Left" Margin="116,0,0,277" TextWrapping="Wrap" Text="运行结果" VerticalAlignment="Bottom" Height="32" Width="380"/>
-        <TextBlock HorizontalAlignment="Left" Margin="45,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="zh-cn" Text="无批号"/><Run Text="结果"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="21,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="zh-cn" Text="批号不匹配结果"/></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="743*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="TextBlock1"  HorizontalAlignment="Left" Margin="320,394,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="17" Width="153" Grid.Column="1"/>
+        <TextBlock Name="TextBlock2" HorizontalAlignment="Left" Margin="52,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="380" Grid.ColumnSpan="2"/>
+        <Button Content="运行" HorizontalAlignment="Left" Margin="465,292,0,0" VerticalAlignment="Top" Height="78" Width="151" Click="Button_Click" FontSize="48" Background="#FFC5482D" Grid.Column="1"/>
+        <TextBox  Name="TextBox1" HorizontalAlignment="Left" Margin="10,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315" Height="42" FontSize="36" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="TextBlock3" HorizontalAlignment="Left" Margin="10,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="362" FontSize="26" Grid.ColumnSpan="2"><Run Language="zh-cn" Text="批号不匹配，"/><Run Text="在下方填入单号"/></TextBlock>
+        <TextBlock x:Name="TextBlock4" HorizontalAlignment="Left" Margin="52,0,0,279" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="32" Width="380" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="TextBlock5" HorizontalAlignment="Left" Margin="52,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="380" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
