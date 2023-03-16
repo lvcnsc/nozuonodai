@@ -39,7 +39,7 @@ namespace _2023_2_4
             Task.Run(() => { // 异步执行
                 try
                 {
-                    conn = new SqlConnection("Data Source=192.168.7.210;Initial Catalog=wms;User ID=sa;Password=123456;");
+                    conn = new SqlConnection("Data Source=192.168.1.212;Initial Catalog=wms;User ID=exe;Password=1234567;");
                     conn.Open();
 
                     this.Dispatcher.Invoke(() => {
