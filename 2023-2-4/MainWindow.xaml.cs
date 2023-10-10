@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.IO;
 using System.Timers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace _2023_2_4
 {
@@ -32,9 +33,9 @@ namespace _2023_2_4
             logWriter.AutoFlush = true;
 
             //创建计时器，每1分钟执行一次按钮点击事件中的代码
-            timer = new Timer(60 * 1000);
+            /*timer = new Timer(60 * 1000);
             timer.Elapsed += Timer_Elapsed;
-            timer.Start();
+            timer.Start();*/
 
             Task.Run(() => { // 异步执行
                 try
@@ -77,7 +78,7 @@ namespace _2023_2_4
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+           /* try
             {
                 SqlCommand cmd = new SqlCommand("insert into wms_inv_bat_fcl(inv_id,bat_code,fcl_qty) select d.inv_id,d.bat_code,d.fcl_qty from wms_move_detail d inner join wms_move m on d.master_id=m.id left join wms_inv_bat_fcl f on d.inv_id=f.inv_id and d.bat_code=f.bat_code where m.rsz_status_id=-1 and f.inv_id is null", conn);
                 int result = cmd.ExecuteNonQuery();
@@ -92,6 +93,41 @@ namespace _2023_2_4
 
                 //记录日志
                 logWriter.WriteLine(DateTime.Now.ToString() + ": SQL语句执行失败，错误信息：" + ex.Message);
+            }*/
+
+            try
+            {
+                /*string cuowupihao = TextBox1.Text;
+
+                SqlCommand cmd = new SqlCommand
+                    ("update a set a.fcl_qty=b.fcl_qty\r\nfrom wms_inv_bat_fcl a \r\njoin wms_move_detail b on a.inv_id=b.inv_id and a.bat_code=b.bat_code\r\njoin wms_move c on c.id=b.master_id\r\nwhere b.fcl_qty<>a.fcl_qty\r\nand c.erp_id=cuowupihao ", conn);*/
+
+                string cuowupihao = TextBox1.Text;
+
+                // 创建一个 SqlCommand 对象
+                SqlCommand cmd = new SqlCommand(
+                    "UPDATE a SET a.fcl_qty = b.fcl_qty " +
+                    "FROM wms_inv_bat_fcl a " +
+                    "JOIN wms_move_detail b ON a.inv_id = b.inv_id AND a.bat_code = b.bat_code " +
+                    "JOIN wms_move c ON c.id = b.master_id " +
+                    "WHERE b.fcl_qty <> a.fcl_qty " +
+                    "AND c.erp_id = @cuowupihao", conn);
+
+                // 添加 cuowupihao 参数
+                cmd.Parameters.AddWithValue("@cuowupihao", cuowupihao);
+
+                // 执行 SQL 命令
+                cmd.ExecuteNonQuery();
+
+                int result1 = cmd.ExecuteNonQuery();
+                TextBlock6.Text = "单号：" + cuowupihao + result1.ToString() + "已处理,请在WMS点击复位后再刷新。";
+                TextBox1.Text = "";
+
+            }
+            catch (Exception ex)
+            {
+                TextBlock6.Text = "SQL语句执行失败：" + ex.Message;
+
             }
         }
 
@@ -105,22 +141,3 @@ namespace _2023_2_4
 }
 
 
-
-
-
-/*在Button_Click下面增加一个if如果TextBox1有内容，就执行以下查询，
-查询select* from wms_move where erp_id='TextBox1'，把字段名为“id”提取出来，填写到select fcl_qty,* from wms_move_detail where master_id='上一个查询提取的id'，再把该查询“inv_id”和“bat_code”提取出来，
-填写到select * from wms_inv_bat_fcl where inv_id='上一个查询提取的inv_id' and bat_code='上一个查询提取的bat_code'，然后把fcl_qty字段名的内容和上一个查询做对比，如果相同则跳过，如果不同则将wms_inv_bat_fcl表的字段fcl_qty更改为
-wms_move_detail表中fcl_qty字段的内容*/
-
-
-
-
-/*select* from wms_move where erp_id='JHGJZT00056408'
-
-select fcl_qty,* from wms_move_detail where master_id='2023020713400cac68528456b'
-
-select * from wms_inv_bat_fcl where inv_id='4715' and bat_code='220601@CGX00000001~4715~0'
-
-
-update wms_inv_bat_fcl  set fcl_qty=300 where id='68348' and bat_code='220601@CGX00000001~4715~0'*/
